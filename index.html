@@ -20,29 +20,38 @@
         const root = document.querySelector("#root");
         
         function App() {
-            const [cnt, setCnt] = React.useState(0);
-            const onClick = () => {
-                //setCnt(cnt+1);
-                setCnt((current)=>current+1);
-            }
+            const [minutes, setMinutes] = React.useState();
+            const onChange = (event) => {
+                setMinutes(event.target.value);
+            };
             return (
                 <div>
-                    <h3>
-                        Total Clicks : {cnt}
-                    </h3>    
-                    <button onClick ={onClick}>
-                        Click ME!
-                    </button>        
+                    <h1 className="hi">
+                       Super Converter
+                    </h1>    
+                    
+                    <label htmlFor="minutes">Minutes</label>
+                    <input 
+                        value={minutes}
+                        id="minutes" 
+                        placeholder="Minutes" 
+                        type="number" 
+                        onChange={onChange}
+                    />
+                    <h4>You wanna convert {minutes}</h4>
+                    <label htmlFor="hours">Hours</label>
+                    <input id="hours" placeholder="Hours" type="number" />
+                    
                 </div>);
         }
 
         ReactDOM.render(<App />, root);//show it to user
+        
         /*
-            const food = ["tomato", "potato"];
-            const [my01 my02] = food;
-
-            const x = [1,2,3];
-            const [a, b, c] = x;
+            <label for="minutes">Minutes</label>
+            <input id="minutes" placeholder="Minutes" type="number" />
+            <label for="hours">Hours</label>
+            <input id="hours" placeholder="Hours" type="number" />
         */
     </script>
 </html>
