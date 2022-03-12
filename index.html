@@ -18,23 +18,30 @@
         //대문작 ㅏ중요합니다. jsx에서 html 태그처럼 쓰려면
         
         const root = document.querySelector("#root");
-        let cnt = 0;
-        function cntUp(){
-            cnt += 1;
-            reRender();
+        
+        function App() {
+            const [cnt, setCnt] = React.useState(0);
+            const onClick = () => {
+                setCnt(cnt+1);
+            }
+            return (
+                <div>
+                    <h3>
+                        Total Clicks : {cnt}
+                    </h3>    
+                    <button onClick ={onClick}>
+                        Click ME!
+                    </button>        
+                </div>);
         }
-        function reRender(){
-            ReactDOM.render(<Container />, root);
-        }
-        const Container = () => (
-            <div>
-                <h3>
-                    Total Clicks : {cnt}
-                </h3>    
-                <button onClick={cntUp}>
-                    Click ME!
-                </button>        
-            </div>);
-            reRender()//show it to user
+
+        ReactDOM.render(<App />, root);//show it to user
+        /*
+            const food = ["tomato", "potato"];
+            const [my01 my02] = food;
+
+            const x = [1,2,3];
+            const [a, b, c] = x;
+        */
     </script>
 </html>
