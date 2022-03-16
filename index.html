@@ -18,102 +18,20 @@
         //대문작 ㅏ중요합니다. jsx에서 html 태그처럼 쓰려면
         
         const root = document.querySelector("#root");
-        
-        function MinutesToHours() {
-            const [amount, setAmount] = React.useState();
-            const [flipped, setFlipped] = React.useState(false);
-            const onChange = (event) => {
-                setAmount(event.target.value);
-            };
-            const reset = () => setAmount(null);
-            const onFlip =() => {
-                reset();
-                setFlipped((current)=>!current);
-            };
-            return (
-                <div>
-                    <div>
-                        <label htmlFor="minutes">Minutes</label>
-                        <input 
-                            value={flipped ? amount * 60 : amount }
-                            id="minutes" 
-                            placeholder="Minutes" 
-                            type="number" 
-                            onChange={onChange}
-                            disabled={flipped}
-                        />
-                    </div>
-                    <div>
-                    <label htmlFor="hours">Hours</label>
-                    <input 
-                        value={flipped ? amount : Math.round(amount / 60)}
-                        id="hours" 
-                        placeholder="Hours" 
-                        type="number" 
-                        onChange={onChange}
-                        disabled={!flipped}
-                    />
-                    </div>
-                    <button onClick={reset}>Reset</button>
-                    <button onClick={onFlip}>{flipped ? "시 - 분":"분 - 시"}</button>
-                </div>);
+        function SaveBtn(){
+            return <button>Save Changes</button>;
         }
-        function KiloToMiles(){
-            const [amount, setAmount] = React.useState();
-            const [flipped, setFlipped] = React.useState(false);
-            const onChange = (event) => {
-                setAmount(event.target.value);
-            };
-            const reset = () => setAmount(0);
-            const onFlip =() => {
-                reset();
-                setFlipped((current)=>!current);
-            };
-            return (
-                <div>
-                    <div>
-                        <label htmlFor="kilo">KiloMeters</label>
-                        <input 
-                            value={flipped ? amount * 1.609 : amount }
-                            id="kilo" 
-                            placeholder="KiloMeters" 
-                            type="number" 
-                            onChange={onChange}
-                            disabled={flipped}
-                        />
-                    </div>
-                    <div>
-                    <label htmlFor="miles">Miles</label>
-                    <input 
-                        value={flipped ? amount : amount / 1.609}
-                        id="miles" 
-                        placeholder="Miles" 
-                        type="number" 
-                        onChange={onChange}
-                        disabled={!flipped}
-                    />
-                    </div>
-                    <button onClick={reset}>Reset</button>
-                    <button onClick={onFlip}>{flipped ? "K to M":"M to K"}</button>
-                </div>);
+        function ConfirmBtn(){
+            return <button>Confirm</button>;
         }
         function App() {
-           const [index, setIndex] = React.useState("xx");
-           const onSelect = (event) => {
-                setIndex(event.target.value)
-           };
+    
             return (
                 <div>
-                    <h1>super converter</h1>
-                    <select value={index} onChange={onSelect}>
-                        <option value="xx">Select Unit</option> 
-                        <option value="0">Minutes To Hours</option>
-                        <option value="1">Kilo To Miles</option>    
-                    </select>
-                    <hr />
-                    {index === "0" ? <MinutesToHours /> : null}
-                    {index === "1" ? <KiloToMiles /> : null}
-                </div>);
+                    <SaveBtn />
+                    <ConfirmBtn />
+                </div>
+            );
         }
 
         ReactDOM.render(<App />, root);//show it to user
