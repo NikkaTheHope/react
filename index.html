@@ -18,18 +18,23 @@
         //대문작 ㅏ중요합니다. jsx에서 html 태그처럼 쓰려면
         
         const root = document.querySelector("#root");
-        function SaveBtn(){
-            return <button>Save Changes</button>;
+        function Btn({text, big}){
+            return <button style={{
+                backgroundColor:"tomato",
+                color:"white",
+                padding:"10px 20px",
+                border:0,
+                borderRadius:10,
+                fontSize: big ? 25 : 16
+            }}>{text}</button>;
         }
-        function ConfirmBtn(){
-            return <button>Confirm</button>;
-        }
+        
         function App() {
     
             return (
                 <div>
-                    <SaveBtn />
-                    <ConfirmBtn />
+                    <Btn text="Save Changes" big={true}/>
+                    <Btn text="Continue" big={false} />
                 </div>
             );
         }
